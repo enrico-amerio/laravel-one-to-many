@@ -25,6 +25,15 @@
                   </small>
                   @enderror
                 </div>
+                <label for="type_id">Type</label>
+                <select name="type_id" class="form-select" aria-label="Default select example">
+                    <option selected>Select a Type</option>
+                    @foreach ($types as $type )
+                    <option value="{{ $type->id }}" @if (old('type_id', $project->type?->id) == $type->id)
+                        selected
+                    @endif>{{ $type->name }}</option>
+                    @endforeach
+                </select>
                 <div class="form-group">
                     <label for="description">Description</label>
                     <textarea type="text" name="description" class="form-control" id="description" placeholder="Enter description">{{old('description', $project->description)}}</textarea>

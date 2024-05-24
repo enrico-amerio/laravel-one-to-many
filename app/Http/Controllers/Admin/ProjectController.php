@@ -5,6 +5,7 @@ use App\Models\Project;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProjectsRequest;
+use App\Models\Type;
 
 class ProjectController extends Controller
 {
@@ -23,7 +24,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $types = Type::all();
+        return view('admin.projects.create', compact('types'));
     }
 
     /**
@@ -33,8 +35,9 @@ class ProjectController extends Controller
     {
         $form_data = $request->all();
         $new_project = new Project();
-        $new_project-> title = $form_data['title'];
-        $new_project-> description = $form_data['description'];
+        // $new_project-> title = $form_data['title'];
+        // $new_project-> description = $form_data['description'];
+        $new_project->fill($form_data);
         $new_project->save();
 
        return redirect()->route('admin.projects.index', $new_project);
@@ -54,7 +57,8 @@ class ProjectController extends Controller
     public function edit(string $id)
     {
         $project = Project::find($id);
-        return view('admin.projects.edit', compact('project'));
+        $types = Type::all();
+        return view('admin.projects.edit', compact('project', 'types'));
     }
 
     /**

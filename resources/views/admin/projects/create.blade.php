@@ -22,10 +22,17 @@
                   <input type="text" name="title" class="form-control  @error('title') is-invalid @enderror" id="title" placeholder="Enter title" value="{{old('title')}}">
                   @error('title')
                   <small class="text-danger ">
-                    {{ $message }}
-                  </small>
-                  @enderror
+                      {{ $message }}
+                    </small>
+                    @enderror
                 </div>
+                <label for="type_id">Type</label>
+                <select name="type_id" class="form-select" aria-label="Default select example">
+                    <option >Select a Type</option>
+                    @foreach ($types as $type )
+                    <option value="{{ $type->id }}">{{ $type->name }}</option>
+                    @endforeach
+                </select>
                 <div class="form-group">
                     <label for="description">Description</label>
                     <textarea type="text" name="description" class="form-control" id="description" placeholder="Enter description">{{old('description')}}</textarea>

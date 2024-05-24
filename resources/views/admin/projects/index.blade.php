@@ -15,7 +15,7 @@
         </thead>
         <tbody>@foreach ($projects as $project )
             <tr>
-                <td>{{$project->type->name}}</td>
+                <td>{{$project->type?->name}}</td>
                 <td>{{$project->title}}</td>
                 <td>{{$project->description}}</td>
                 <td>
