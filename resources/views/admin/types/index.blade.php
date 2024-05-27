@@ -17,7 +17,7 @@
         <form class="d-flex" action="{{route('admin.types.store')}}" method="POST" >
             @csrf
             <input type="text" class="form-control me-2" placeholder="New Type" name="name">
-            <button class="btn btn-outline-success" type="submit">Add</button>
+            <button class="btn btn-outline-primary" type="submit">Add</button>
         </form>
     </div>
     <table class="table  crud-table">
